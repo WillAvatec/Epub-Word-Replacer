@@ -1,6 +1,6 @@
 const JSZip = require("jszip");
 const fs = require("fs");
-const { getFileName, modifyTextFromFile } = require('./utils');
+const { getFileName, modifyTextFromFile, replaceMisterWithSan } = require('./utils');
 
 // Function to modify EPUB content by replacing specific phrases
 async function modifyEPUB(epubPath, strObj) {
@@ -11,6 +11,7 @@ async function modifyEPUB(epubPath, strObj) {
   for(const [original, newPhrase] of Object.entries(strObj)){
     await modifyTextFromFile(zip,original,newPhrase);
   }
+  await replaceMisterWithSan(zip);
 
   const fileName = getFileName(epubPath);
 
@@ -31,5 +32,7 @@ const textToModify = {
   "Lady White": "White-sama",
   "Lady Queen": "Queen-sama",
   "Lady Aku" : "Aku-sama",
-} 
-modifyEPUB(fileName,textToModify); 
+}
+
+// Example usage
+modifyEPUB(fileName,textToModify);

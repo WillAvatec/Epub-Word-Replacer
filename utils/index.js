@@ -22,7 +22,18 @@ async function modifyTextFromFile(zip, originalPhrase, newPhrase) {
   }
 }
 
+async function replaceMisterWithSan(zip) {
+  for (const [relativePath, file] of Object.entries(zip.files)) {
+    if (relativePath.endsWith(".xhtml") || relativePath.endsWith(".html")) {
+      const content = await file.async("text");
+      const modifiedContent = content.replace(/\bMister (\w+)\b/g, '$1-san');
+      zip.file(relativePath, modifiedContent); // Replace content
+    }
+  }
+}
+
 module.exports = {
   getFileName,
-  modifyTextFromFile
+  modifyTextFromFile,
+  replaceMisterWithSan
 };
