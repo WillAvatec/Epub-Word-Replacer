@@ -54,7 +54,6 @@ const textToModify = {
 }
 
 let args = process.argv.slice(2) ?? null;
-console.log({args})
 
 if(args != null){
   modifyEPUB(args[0], textToModify);
