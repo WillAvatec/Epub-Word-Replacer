@@ -32,7 +32,32 @@ const textToModify = {
   "Lady White": "White-sama",
   "Lady Queen": "Queen-sama",
   "Lady Aku" : "Aku-sama",
+  "Hoppity": "Pyon",
+  "hoppity": "pyon",
+  "Hippity":"Usa",
+  "hippity":"usa",
+  "meow":"nyan",
+  "old man" : "oyaji",
+  "Old man" : "Oyaji",
+  "Sniff" : "Kun",
+  "sniff" : "Kun",
+  "Sniffity": "Sun",
+  "sniffity" : "Sun",
+  "Little Luna" : "Luna-chan",
+  "Little Eagle" : "Eagle-chan",
+  "Little Tron" : "Tron-chan",
+  "Little Aku" : "Aku-chan",
+  "Sister Luna" : "Luna-neesama",
+  "Sister White" : "White-neesama",
+  "Sister Queen" : "Queen-neesan",
+  "Animadmirals" : "Beast Generals",
 }
 
-// Example usage
-modifyEPUB(fileName,textToModify);
+let args = process.argv.slice(2) ?? null;
+console.log({args})
+
+if(args != null){
+  modifyEPUB(args[0], textToModify);
+}else {
+  modifyEPUB(fileName,textToModify);
+}
